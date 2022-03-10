@@ -30,8 +30,8 @@ jobs:
           fetch-depth: 0
       - name: Commit files
         run: |
-          git config --global user.email "snile657@outlook.com"
-          git config --global user.name "zizhenli"
+          git config --global user.email "${{ secrets.EMAIL }}"
+          git config --global user.name "${{ secrets.USER }}"
           yarn install --frozen-lockfile
           yarn bumpVersion:main
           yarn build
