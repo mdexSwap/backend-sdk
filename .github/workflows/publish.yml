@@ -36,7 +36,7 @@ jobs:
           yarn bumpVersion:main
           yarn build
           npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
-          npm publish
+          npm publish --access=public
           git add .
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -63,7 +63,7 @@ jobs:
           yarn bumpVersion:release
           yarn build
           npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
-          npm publish --tag beta
+          npm publish --access=public --tag beta
           git add .
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
