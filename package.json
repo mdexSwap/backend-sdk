@@ -1,0 +1,84 @@
+{
+  "name": "mdex-backend-sdk",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./index.js",
+  "scripts": {
+    "build": "NODE_OPTIONS=--max_old_space_size=8192 tsc -p tsconfig.json",
+    "format": "prettier --write \"**/*.ts\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "bumpVersion:main": "standard-version --commit-all --message 'chore(production): %s\n\n[skip main-ci]' --no-verify",
+    "bumpVersion:release": "standard-version --commit-all --message 'chore(release): %s\n\n[skip release-ci]' --no-verify --prerelease beta",
+    "bumpVersion:main:dry": "standard-version --commit-all --message 'chore(production): %s\n\n[skip main-ci]' --no-verify --dry-run",
+    "bumpVersion:release:dry": "standard-version --commit-all --message 'chore(release): %s\n\n[skip release-ci]' --no-verify --prerelease beta --dry-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdexSwap/backend-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mdexSwap/backend-sdk/issues"
+  },
+  "homepage": "https://github.com/mdexSwap/backend-sdk#readme",
+  "keywords": [],
+  "author": "zizhenli",
+  "license": "MIT",
+  "files": [
+    "package.json",
+    "lib"
+  ],
+  "dependencies": {
+    "@fleekhq/fleek-storage-js": "^1.0.20",
+    "@nestjs/common": "^8.1.1",
+    "@nestjs/platform-express": "^8.1.1",
+    "@nestjs/swagger": "4.5.10",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.11.0",
+    "cls-hooked": "^4.2.2",
+    "ethers": "5.4",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.34",
+    "mongoose": "5.9.5",
+    "nestjs-redis": "1.2.5",
+    "pino": "^6.13.1",
+    "pino-pretty": "^6.0.0",
+    "reflect-metadata": "^0.1.13",
+    "uniqid": "^5.0.3",
+    "typeorm": "^0.2.38",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "26.0.22",
+    "@types/lodash": "^4.14.134",
+    "@types/mongoose": "^5.9.5",
+    "@types/node": "^12.11.1",
+    "jest": "26.6.3",
+    "prettier": "^1.18.2",
+    "standard-version": "^8.0.1",
+    "ts-jest": "26.5.4",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
