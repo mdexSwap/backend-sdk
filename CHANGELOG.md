@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/mdexSwap/backend-sdk/compare/v0.0.1...v0.0.2) (2022-03-10)
+
+
+### Features
+
+* init - part10 ([5bbc3ce](https://github.com/mdexSwap/backend-sdk/commit/5bbc3ce00c4c5360949a0bd600cf4795ea316a8a))
+* init - part11 ([4619418](https://github.com/mdexSwap/backend-sdk/commit/4619418f03840c486f323e1d1f4b867f53e23d57))
+* init - part12 ([194ebf7](https://github.com/mdexSwap/backend-sdk/commit/194ebf71fd41d189902d3424354195fe32542050))
+
 ### 0.0.1 (2022-03-10)
 
 
