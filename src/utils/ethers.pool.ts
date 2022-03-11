@@ -62,14 +62,16 @@ class EthersFactoryPool {
       ensAddressHeco,
     );
     this.providerBsc = this.etherFactoryService.jsonRpcProvider(ensAddressBsc);
-    this.walletHeco = this.etherFactoryService.wallet({
-      walletPrivateKey: process.env.ETHER_PRIVATE_KEY,
-      provider: this.providerHeco,
-    });
-    this.walletBsc = this.etherFactoryService.wallet({
-      walletPrivateKey: process.env.ETHER_PRIVATE_KEY,
-      provider: this.providerBsc,
-    });
+    if (process.env.ETHER_PRIVATE_KEY) {
+      this.walletHeco = this.etherFactoryService.wallet({
+        walletPrivateKey: process.env.ETHER_PRIVATE_KEY,
+        provider: this.providerHeco,
+      });
+      this.walletBsc = this.etherFactoryService.wallet({
+        walletPrivateKey: process.env.ETHER_PRIVATE_KEY,
+        provider: this.providerBsc,
+      });
+    }
   }
 
   public getEnsAddress({ chainId }: { chainId: number }): string {
