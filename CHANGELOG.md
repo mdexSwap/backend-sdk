@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/mdexSwap/backend-sdk/compare/v0.0.2...v0.0.3) (2022-03-11)
+
+
+### Features
+
+* init - part13 ([dc5d80b](https://github.com/mdexSwap/backend-sdk/commit/dc5d80b075703d475fdf68bb48cd571129487919))
+
 ### [0.0.2](https://github.com/mdexSwap/backend-sdk/compare/v0.0.1...v0.0.2) (2022-03-10)
 
 
