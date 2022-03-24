@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/mdexSwap/backend-sdk/compare/v0.0.4...v0.0.5) (2022-03-24)
+
+
+### Features
+
+* 添加generateUuid方法 - part1 ([10b8c60](https://github.com/mdexSwap/backend-sdk/commit/10b8c60b8e096450d6462c8964a60f42f98a50af))
+
 ### [0.0.4](https://github.com/mdexSwap/backend-sdk/compare/v0.0.3...v0.0.4) (2022-03-24)
 
 
