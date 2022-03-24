@@ -30,6 +30,7 @@
     "lib"
   ],
   "dependencies": {
+    "@axihe/snowflake": "^1.0.2",
     "@fleekhq/fleek-storage-js": "^1.0.20",
     "@nestjs/common": "^8.1.1",
     "@nestjs/platform-express": "^8.1.1",

@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@axihe/snowflake@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@axihe/snowflake/-/snowflake-1.0.2.tgz#14952efe115b6a1d41c971733630fabd209ca1cb"
+  integrity sha512-FE0M3S+cfJkweDECI3fHhQSxG3WVe3Zn7oLihzifmb+hDRJSLgEM+SXYsxbqrrxon4TJOC+p5e5U6iuFsU6HIA==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.14.5":
   version "7.14.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.14.5.tgz#23b08d740e83f49c5e59945fbf1b43e80bbf4edb"
