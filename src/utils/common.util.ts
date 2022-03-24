@@ -13,7 +13,7 @@ export function hasDuplicates(a) {
   return _.uniq(a).length !== a.length;
 }
 
-const generateUuid = () => {
+export const generateUuid = () => {
   const config = {
     worker_id: 16, // 0-31
     datacenter_id: 18, // 0-31
@@ -22,5 +22,3 @@ const generateUuid = () => {
   const id = idWorker.nextId();
   return id.toString();
 };
-
-console.log(generateUuid());
