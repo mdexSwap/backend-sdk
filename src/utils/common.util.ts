@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
 import Snowflake from '@axihe/snowflake';
+import moment from 'moment';
 
 export const IsNumberString = (value): boolean => {
   if (_.isString(value) && value !== '') {
@@ -21,4 +22,12 @@ export const generateUuid = () => {
   const idWorker = new Snowflake(config.worker_id, config.datacenter_id);
   const id = idWorker.nextId();
   return id.toString();
+};
+
+// 时间转时间戳
+export const time2timestamp = (strTime = null) => {
+  if (strTime) {
+    return moment(strTime, this.dayTimeFormat).unix();
+  }
+  return moment().unix();
 };
