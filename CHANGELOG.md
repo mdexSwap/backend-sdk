@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/mdexSwap/backend-sdk/compare/v0.0.5...v0.0.6) (2022-03-24)
+
+
+### Features
+
+* 添加time2timestamp方法 ([404c85f](https://github.com/mdexSwap/backend-sdk/commit/404c85f858a7c54a667515abfbc6d44f0beeea1d))
+
 ### [0.0.5](https://github.com/mdexSwap/backend-sdk/compare/v0.0.4...v0.0.5) (2022-03-24)
 
 
