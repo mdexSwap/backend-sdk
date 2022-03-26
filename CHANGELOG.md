@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/mdexSwap/backend-sdk/compare/v0.0.6...v0.0.7) (2022-03-26)
+
+
+### Features
+
+* update ([4409aca](https://github.com/mdexSwap/backend-sdk/commit/4409acac166bdaf5f36d868e6c001162eb93bea6))
+
 ### [0.0.6](https://github.com/mdexSwap/backend-sdk/compare/v0.0.5...v0.0.6) (2022-03-24)
 
 
