@@ -24,6 +24,18 @@ export class RedisClientService {
     return this.redisClient.set(key, value);
   }
 
+  async setex({
+    key,
+    seconds,
+    value,
+  }: {
+    key: string;
+    value: any;
+    seconds: number;
+  }): Promise<any> {
+    return this.redisClient.setex(key, seconds, value);
+  }
+
   async get(key: string): Promise<any> {
     const value = await this.redisClient.get(key);
     try {

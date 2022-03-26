@@ -3,13 +3,15 @@ import { ethers } from 'ethers';
 import { JsonRpcProvider } from '@ethersproject/providers';
 import { Contract } from '@ethersproject/contracts';
 import { Wallet } from '@ethersproject/wallet';
-import batchSend_abi from '../contracts/batchSend.json';
-import erc20_abi from '../contracts/erc20.json';
-import boardroomLock from '../contracts/boardroom_lock.json';
-import pair_abi from '../contracts/pair.json';
-import nftMining from '../contracts/nftMining.json';
-import nft from '../contracts/nft.json';
-import blindBox from '../contracts/blindBox.json';
+import batchSend_abi from '../abi/batchSend.json';
+import erc20_abi from '../abi/erc20.json';
+import boardroomLock from '../abi/boardroom_lock.json';
+import pair_abi from '../abi/pair.json';
+import nftMining from '../abi/nftMining.json';
+import nft from '../abi/nft.json';
+import blindBox from '../abi/blindBox.json';
+import erc721 from '../abi/erc721_abi.json';
+import erc1155 from '../abi/erc1155_abi.json';
 import { Signer } from '@ethersproject/abstract-signer';
 import { Provider } from '@ethersproject/abstract-provider';
 
@@ -105,5 +107,25 @@ export class EtherFactoryService {
     signerOrProvider: Signer | Provider;
   }): Contract {
     return new ethers.Contract(contractAddress, blindBox, signerOrProvider);
+  }
+
+  nftContract721({
+    contractAddress,
+    signerOrProvider,
+  }: {
+    contractAddress: string;
+    signerOrProvider: Signer | Provider;
+  }): Contract {
+    return new ethers.Contract(contractAddress, erc721, signerOrProvider);
+  }
+
+  nftContract1155({
+    contractAddress,
+    signerOrProvider,
+  }: {
+    contractAddress: string;
+    signerOrProvider: Signer | Provider;
+  }): Contract {
+    return new ethers.Contract(contractAddress, erc1155, signerOrProvider);
   }
 }
