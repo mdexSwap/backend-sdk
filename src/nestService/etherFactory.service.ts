@@ -12,6 +12,7 @@ import nft from '../abi/nft.json';
 import blindBox from '../abi/blindBox.json';
 import erc721 from '../abi/erc721_abi.json';
 import erc1155 from '../abi/erc1155_abi.json';
+import airdrop from '../abi/airdrop.json';
 import { Signer } from '@ethersproject/abstract-signer';
 import { Provider } from '@ethersproject/abstract-provider';
 
@@ -127,5 +128,15 @@ export class EtherFactoryService {
     signerOrProvider: Signer | Provider;
   }): Contract {
     return new ethers.Contract(contractAddress, erc1155, signerOrProvider);
+  }
+
+  airdropContract({
+    contractAddress,
+    signerOrProvider,
+  }: {
+    contractAddress: string;
+    signerOrProvider: Signer | Provider;
+  }): Contract {
+    return new ethers.Contract(contractAddress, airdrop, signerOrProvider);
   }
 }
