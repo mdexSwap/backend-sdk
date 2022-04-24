@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/mdexSwap/backend-sdk/compare/v0.0.8...v0.0.9) (2022-04-24)
+
+
+### Features
+
+* add airdrop Contract - part1 ([37a79eb](https://github.com/mdexSwap/backend-sdk/commit/37a79eb2fb03c6c6fdc54e22e16381d0477a28e1))
+
 ### [0.0.8](https://github.com/mdexSwap/backend-sdk/compare/v0.0.7...v0.0.8) (2022-04-22)
 
 
