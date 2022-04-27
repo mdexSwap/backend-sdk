@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/mdexSwap/backend-sdk/compare/v0.0.9...v0.0.10) (2022-04-27)
+
+
+### Features
+
+* add eth chain ([4b8bdf0](https://github.com/mdexSwap/backend-sdk/commit/4b8bdf01e27a71ed4e0c49b7ff5ad447b6432749))
+
 ### [0.0.9](https://github.com/mdexSwap/backend-sdk/compare/v0.0.8...v0.0.9) (2022-04-24)
 
 
