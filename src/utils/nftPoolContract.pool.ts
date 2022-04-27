@@ -1,5 +1,5 @@
-import { EtherFactoryService } from '../nestService/etherFactory.service';
 import { BaseContractFactoryPool } from './baseContract.pool';
+import {EtherFactoryService} from "../nestService";
 
 class NftPoolContractFactoryPool extends BaseContractFactoryPool {
   private static nftPoolContractFactoryPool: NftPoolContractFactoryPool;

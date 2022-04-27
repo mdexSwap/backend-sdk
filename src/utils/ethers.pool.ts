@@ -1,14 +1,15 @@
-import {
-  ADDRESS_TYPE,
-  BSC_NETWORK,
-  HECO_NETWORK,
-  Network,
-} from '../constant/ethers.constants';
 import * as _ from 'lodash';
 import moment from 'moment';
 import { JsonRpcProvider } from '@ethersproject/providers';
-import { EtherFactoryService } from '../nestService/etherFactory.service';
 import { Wallet } from '@ethersproject/wallet';
+import {
+  ADDRESS_TYPE,
+  BSC_NETWORK,
+  ETH_NETWORK,
+  HECO_NETWORK,
+  Network,
+} from '../constant';
+import { EtherFactoryService } from '../nestService';
 
 export type ArchivedAddressListType = { address: string; lock: number }[];
 export type EnsAddressListType = { address: string; count: number }[];
@@ -18,16 +19,21 @@ class EthersFactoryPool {
 
   private readonly bscEnsAddressList: EnsAddressListType;
   private readonly bscArchivedAddressList: ArchivedAddressListType;
+  private readonly ethEnsAddressList: EnsAddressListType;
+  private readonly ethArchivedAddressList: ArchivedAddressListType;
   private readonly hecoEnsAddressList: EnsAddressListType;
   private readonly hecoArchivedAddressList: ArchivedAddressListType;
   private readonly providerHeco: JsonRpcProvider;
   private readonly providerBsc: JsonRpcProvider;
+  private readonly providerEth: JsonRpcProvider;
   private readonly walletHeco: Wallet;
   private readonly walletBsc: Wallet;
+  private readonly walletEth: Wallet;
 
   private constructor(
     private readonly hecoNetWork: Network,
     private readonly bscNetWork: Network,
+    private readonly ethNetWork: Network,
     private readonly etherFactoryService: EtherFactoryService,
   ) {
     this.bscEnsAddressList = _.map(bscNetWork.ensAddress, address => ({
@@ -36,6 +42,17 @@ class EthersFactoryPool {
     }));
     this.bscArchivedAddressList = _.map(
       bscNetWork.archivedAddress,
+      address => ({
+        address,
+        lock: 0,
+      }),
+    );
+    this.ethEnsAddressList = _.map(ethNetWork.ensAddress, address => ({
+      address,
+      count: 0,
+    }));
+    this.ethArchivedAddressList = _.map(
+      ethNetWork.archivedAddress,
       address => ({
         address,
         lock: 0,
@@ -58,10 +75,14 @@ class EthersFactoryPool {
     const ensAddressBsc = this.getEnsAddress({
       chainId: BSC_NETWORK.chainId,
     });
+    const ensAddressEth = this.getEnsAddress({
+      chainId: ETH_NETWORK.chainId,
+    });
     this.providerHeco = this.etherFactoryService.jsonRpcProvider(
       ensAddressHeco,
     );
     this.providerBsc = this.etherFactoryService.jsonRpcProvider(ensAddressBsc);
+    this.providerEth = this.etherFactoryService.jsonRpcProvider(ensAddressEth);
     if (process.env.ETHER_PRIVATE_KEY) {
       this.walletHeco = this.etherFactoryService.wallet({
         walletPrivateKey: process.env.ETHER_PRIVATE_KEY,
@@ -70,6 +91,10 @@ class EthersFactoryPool {
       this.walletBsc = this.etherFactoryService.wallet({
         walletPrivateKey: process.env.ETHER_PRIVATE_KEY,
         provider: this.providerBsc,
+      });
+      this.walletEth = this.etherFactoryService.wallet({
+        walletPrivateKey: process.env.ETHER_PRIVATE_KEY,
+        provider: this.providerEth,
       });
     }
   }
@@ -82,6 +107,9 @@ class EthersFactoryPool {
         break;
       case BSC_NETWORK.chainId:
         ensAddressList = this.bscEnsAddressList;
+        break;
+      case ETH_NETWORK.chainId:
+        ensAddressList = this.ethEnsAddressList;
         break;
     }
     const ensAddressInfo = _.minBy(ensAddressList, o => o?.count);
@@ -105,6 +133,9 @@ class EthersFactoryPool {
       case BSC_NETWORK.chainId:
         archivedAddressList = this.bscArchivedAddressList;
         break;
+      case ETH_NETWORK.chainId:
+        archivedAddressList = this.ethArchivedAddressList;
+        break;
     }
     let archivedAddressInfo;
     if (unlock) {
@@ -127,6 +158,9 @@ class EthersFactoryPool {
     switch (addressType) {
       case ADDRESS_TYPE.archivedBsc:
         this.setLockTime(this.bscArchivedAddressList, address);
+        break;
+      case ADDRESS_TYPE.archivedEth:
+        this.setLockTime(this.ethArchivedAddressList, address);
         break;
       case ADDRESS_TYPE.archivedHeco:
         this.setLockTime(this.hecoArchivedAddressList, address);
@@ -163,6 +197,8 @@ class EthersFactoryPool {
         return this.providerHeco;
       case BSC_NETWORK.chainId:
         return this.providerBsc;
+      case ETH_NETWORK.chainId:
+        return this.providerEth;
     }
   }
 
@@ -172,6 +208,8 @@ class EthersFactoryPool {
         return this.walletHeco;
       case BSC_NETWORK.chainId:
         return this.walletBsc;
+      case ETH_NETWORK.chainId:
+        return this.walletEth;
     }
   }
 
@@ -179,6 +217,7 @@ class EthersFactoryPool {
     EthersFactoryPool.ethersFactoryPool = new EthersFactoryPool(
       HECO_NETWORK,
       BSC_NETWORK,
+      ETH_NETWORK,
       new EtherFactoryService(),
     );
     return EthersFactoryPool.ethersFactoryPool;

@@ -5,6 +5,8 @@ export enum ADDRESS_TYPE {
   archivedBsc = 'archivedBsc',
   ensHeco = 'ensHeco',
   archivedHeco = 'archivedHeco',
+  ensEth = 'ensEth',
+  archivedEth = 'archivedEth',
 }
 
 export type Network = {
@@ -35,4 +37,14 @@ export const BSC_NETWORK: Network = {
   archived: ADDRESS_TYPE.archivedBsc,
   ensAddress: _.split(process.env.BSC_ENS_ADDRESS, ','),
   archivedAddress: _.split(process.env.BSC_ARCHIVED_ADDRESS, ','),
+};
+
+export const ETH_NETWORK: Network = {
+  chainId: 1,
+  name: 'ETH',
+  cacheName: 'ETH_CACHE',
+  ens: ADDRESS_TYPE.ensEth,
+  archived: ADDRESS_TYPE.archivedEth,
+  ensAddress: _.split(process.env.ETH_ENS_ADDRESS, ','),
+  archivedAddress: _.split(process.env.ETH_ARCHIVED_ADDRESS, ','),
 };

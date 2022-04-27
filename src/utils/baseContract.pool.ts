@@ -4,7 +4,7 @@ import { JsonRpcProvider } from '@ethersproject/providers';
 import { EthersPool } from './ethers.pool';
 import { Signer } from '@ethersproject/abstract-signer';
 import { Provider } from '@ethersproject/abstract-provider';
-import { BSC_NETWORK, HECO_NETWORK } from '../constant/ethers.constants';
+import { BSC_NETWORK, ETH_NETWORK, HECO_NETWORK } from '../constant';
 
 export interface ContractMap {
   clear(): void;
@@ -28,6 +28,8 @@ export abstract class BaseContractFactoryPool {
 
   private readonly contractBscMap: ContractMap = new Map();
 
+  private readonly contractEthMap: ContractMap = new Map();
+
   constructor(
     public readonly initContractPromise: ({
       contractAddress,
@@ -44,6 +46,8 @@ export abstract class BaseContractFactoryPool {
         return this.contractHecoMap.size;
       case BSC_NETWORK.chainId:
         return this.contractBscMap.size;
+      case ETH_NETWORK.chainId:
+        return this.contractEthMap.size;
     }
   }
 
@@ -66,6 +70,12 @@ export abstract class BaseContractFactoryPool {
           contractMap: this.contractBscMap,
           contractAddress,
           provider: EthersPool.getProvider(BSC_NETWORK.chainId),
+        });
+      case ETH_NETWORK.chainId:
+        return this.selectContract({
+          contractMap: this.contractEthMap,
+          contractAddress,
+          provider: EthersPool.getProvider(ETH_NETWORK.chainId),
         });
     }
   }
@@ -90,6 +100,12 @@ export abstract class BaseContractFactoryPool {
           contractAddress,
         });
         break;
+      case ETH_NETWORK.chainId:
+        BaseContractFactoryPool.delContract({
+          contractMap: this.contractEthMap,
+          contractAddress,
+        });
+        break;
     }
   }
 
@@ -107,6 +123,9 @@ export abstract class BaseContractFactoryPool {
       case BSC_NETWORK.chainId:
         const contractBsc = this.contractHecoMap.get(baseAddress);
         return !_.isEmpty(contractBsc);
+      case ETH_NETWORK.chainId:
+        const contractEth = this.contractHecoMap.get(baseAddress);
+        return !_.isEmpty(contractEth);
     }
   }
 
